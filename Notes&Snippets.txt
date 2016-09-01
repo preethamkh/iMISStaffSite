@@ -77,6 +77,8 @@ IND -
 <script type="text/javascript">
 jQuery(document).ready(function() {
 	setTimeout(function () {
+		
+		// Change DateTime to Date
 		jQuery("td[role='gridcell']").each(function() {
 			if(Date.parse(jQuery(this).text())) {
 				var d = new Date(jQuery(this).text());
@@ -85,7 +87,8 @@ jQuery(document).ready(function() {
 				jQuery(this).text([ x[1], x[0], x[2] ].join('/'));
 			}
 		});
-
+		
+		// Show/Hide Membership-Billing TAB
 		if(jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_memberType").text() === "Prospect Ind PT" || jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_billingCat").text() === "Individual") {
 			jQuery("span.rtsTxt").each(function(index) {
 				if(jQuery(this).text() === "Membership Billing")
@@ -102,7 +105,8 @@ jQuery(document).ready(function() {
 				}
 			});
 		}
-
+		
+		// Change Date format on Sorting
 		jQuery('a').click(function() {	
 			setTimeout(function() {
 				jQuery("td").each(function()  {
@@ -114,6 +118,11 @@ jQuery(document).ready(function() {
 				});
 			}, 3000);	
 		});
+		
+		// Display Renew Button for IND members
+		if(jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_billingCat").text() === "Individual") {
+			jQuery("head").append("<style>div.PanelNoPadding.CenterText{display:block!important;}</style>");
+		}
 		
 	}, 600);
 });
