@@ -1,0 +1,121 @@
+
+************** HTML SNIPPET FOR WARNING ICON / TEXT **************
+
+<div class="media"><img alt="" src="[~]/images/Icons/Alerts/warning.png" />
+<div class="media-body">
+Primary email is missing
+</div>
+</div>
+
+
+Add to alert set - > Staff account page alert
+
+Missing MailPref
+
+Missing mail pref alert
+
+Creates an alert if the selected contact has no mail prefs.
+
+Data source name: MissingMailPrefs
+Query: 
+
+
+************** JS SNIPPET FOR DATE FORMATTING (AU DATE) *****************
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	setTimeout(function () {
+		jQuery(".rgSorted[role='gridcell']").each(function() {
+			console.log(jQuery(this).text().slice(0, jQuery(this).text().indexOf(' ')));
+			jQuery(this).text(jQuery(this).text().slice(0, jQuery(this).text().indexOf(' ')));
+		});
+	}, 600);
+});
+</script>
+
+
+jQuery("td[role='gridcell']").each(function() {
+	var currentElement = jQuery(this).text();
+	if(currentElement.indexOf(":00 ") > -1) {
+		var d = new Date(currentElement).toLocaleDateString().split(/\//);
+		jQuery(this).text([d[1], d[0], d[2]].join('/'));
+	}
+});
+
+
+css class
+ testingDateTimeRender
+ 
+ 
+ 
+****************** JS SNIPPET for MEMBERSHIP BILLING (HIDE/SHOW TAB) *******************
+
+if(jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_memberType").text() === "Prospect Ind PT" || jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_billingCat").text() === "Individual") {
+	jQuery("span.rtsTxt").each(function(index) {
+		if(jQuery(this).text() === "Membership Billing")
+		{
+			console.log("loop1");
+			//jQuery(this).closest("li.rtsLI.rtsLast").show();
+		}
+	});
+}
+else {
+	jQuery("span.rtsTxt").each(function(index) {
+		if(jQuery(this).text() === "Membership Billing") {
+			jQuery(this).closest("li.rtsLI.rtsLast").hide();
+		}
+	});
+}
+
+
+
+PPT - 115413
+IND - 
+
+************************* FINAL SNIPPET *************************
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	setTimeout(function () {
+		jQuery("td[role='gridcell']").each(function() {
+			if(Date.parse(jQuery(this).text())) {
+				var d = new Date(jQuery(this).text());
+				var x = d.toLocaleDateString().split(/\//);
+				console.log( [ x[1], x[0], x[2] ].join('/'));
+				jQuery(this).text([ x[1], x[0], x[2] ].join('/'));
+			}
+		});
+
+		if(jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_memberType").text() === "Prospect Ind PT" || jQuery("span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_billingCat").text() === "Individual") {
+			jQuery("span.rtsTxt").each(function(index) {
+				if(jQuery(this).text() === "Membership Billing")
+				{
+					console.log("loop1");
+					//jQuery(this).closest("li.rtsLI.rtsLast").show();
+				}
+			});
+		}
+		else {
+			jQuery("span.rtsTxt").each(function(index) {
+				if(jQuery(this).text() === "Membership Billing") {
+					jQuery(this).closest("li.rtsLI.rtsLast").hide();
+				}
+			});
+		}
+
+		jQuery('a').click(function() {	
+			setTimeout(function() {
+				jQuery("td").each(function()  {
+					var currentElement = jQuery(this).text();
+					if(currentElement.indexOf(":00 ") > -1) {
+						var d = new Date(currentElement).toLocaleDateString().split(/\//);
+						jQuery(this).text([d[1], d[0], d[2]].join('/'));
+					}
+				});
+			}, 3000);	
+		});
+		
+	}, 600);
+});
+</script>
+
