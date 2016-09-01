@@ -2644,7 +2644,8 @@ h2 {
   border-bottom-color: #ddd;
 }
 
-/* custom */
+/* CUSTOM CHANGES */
+
 .IndivMemProfile .PanelFieldValue {
   clear: both;
 }
@@ -2667,4 +2668,13 @@ span#ctl01_TemplateBody_WebPartManager1_gwpciMyAccount_ciMyAccount_NewPanelEdito
 
 div#ctl01_TemplateBody_WebPartManager1_gwpciMyAccount_ciMyAccount_NewPanelEditorCommon_panelEditor_editablePanel table tbody tr {
 	vertical-align: top!important;
+}
+
+div.PanelNoPadding.CenterText {
+	display: none!important;
+}
+
+/* mini profile */
+div.CalloutPart2 > span#ctl01_TemplateBody_WebPartManager1_gwpciMiniProfile_ciMiniProfile_contactStatus_memberType {
+	
 }
